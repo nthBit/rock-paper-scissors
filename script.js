@@ -52,9 +52,6 @@ function playFiveRounds() {
         }
     }
 
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-
     if (playerScore > computerScore) {
         console.log(`You win! Player Score: ${playerScore}, Computer Score: ${computerScore}.`);
     } else if (computerScore > playerScore) {
