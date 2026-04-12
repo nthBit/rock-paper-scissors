@@ -1,20 +1,17 @@
-function playerChoice() {
-    let num = Number(prompt("Choose: Rock = 0; Paper = 1; Scissors = 2."));
-    return convertValue(num)
+function getPlayerChoice() {
+    return prompt("Type: Rock; Paper; Scissors.").toLowerCase();
 }
 
-function computerChoice() {
-    let num = Math.floor(Math.random() * 3);
-    return convertValue(num)
+function getComputerChoice() {
+    return convertValue(Math.floor(Math.random() * 3));
 }
 
 function convertValue(num) {
-    if (num === 0) {
-        return "rock";
-    } else if (num === 1) {
-        return "paper";
-    } else if (num === 2) {
-        return "scissors"
+    switch (num) {
+        case 0: return "rock";
+        case 1: return "paper";
+        case 2: return "scissors";
+        default: return "unknown";
     }
 }
 
@@ -32,22 +29,22 @@ function compareChoices(computer, player) {
     }
 }
 
-const user = playerChoice();
-const opponent = computerChoice();
-const gameOver = compareChoices(opponent, user);
+function startGame() {
 
+    const user = getPlayerChoice();
+    const opponent = getComputerChoice();
+    const result = compareChoices(opponent, user);
 
-function finalMessage() {
     console.log(`Player chooses: ${user}.`);
     console.log(`Computer chooses: ${opponent}.`);
 
-    if (gameOver === "player") {
+    if (result === "player") {
         console.log("You win!");
-    } else if (gameOver === "computer") {
+    } else if (result === "computer") {
         console.log("Computer wins.");
     } else {
         console.log("Draw.")
     }
 }
 
-finalMessage();
+startGame();
