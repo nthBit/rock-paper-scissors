@@ -1,7 +1,3 @@
-function getPlayerChoice() {
-    return prompt("Type: Rock; Paper; Scissors.").toLowerCase();
-}
-
 function getComputerChoice() {
     return convertValue(Math.floor(Math.random() * 3));
 }
@@ -29,37 +25,36 @@ function compareChoices(computer, player) {
     }
 }
 
-function playFiveRounds() {
-    let playerScore = 0;
-    let computerScore = 0;
+const body = document.querySelector('body');
+const rock = document.createElement('button');
+const paper = document.createElement('button');
+const scissors = document.createElement('button');
 
-    for (let i = 5; i > 0; i--) {
-        let user = getPlayerChoice();
-        let opponent = getComputerChoice();
-        let result = compareChoices(opponent, user);
+rock.textContent = 'Rock';
+paper.textContent = 'Paper';
+scissors.textContent = 'Scissors';
 
-        console.log(`Player chooses: ${user}.`);
-        console.log(`Computer chooses: ${opponent}.`);
+body.appendChild(rock);
+body.appendChild(paper);
+body.appendChild(scissors);
 
-        if (result === "player") {
-            console.log("You win!");
-            playerScore += 1;
-        } else if (result === "computer") {
-            console.log("Computer wins.");
-            computerScore += 1;
-        } else {
-            console.log("Draw.")
-        }
-    }
 
-    if (playerScore > computerScore) {
-        console.log(`You win! Player Score: ${playerScore}, Computer Score: ${computerScore}.`);
-    } else if (computerScore > playerScore) {
-        console.log(`Computer wins. Player Score: ${playerScore}, Computer Score: ${computerScore}.`);
-    } else {
-        console.log(`Draw. Player Score: ${playerScore}, Computer Score: ${computerScore}.`);
-    }
+rock.addEventListener('click', () => {
+    const playerChoice = 'rock';
+    playRound(playerChoice);
+});
+paper.addEventListener('click', () => {
+    const playerChoice = 'paper';
+    playRound(playerChoice);
+});
+scissors.addEventListener('click', () => {
+    const playerChoice = 'scissors';
+    playRound(playerChoice);
+});
 
+function playRound(userChoice) {
+    const user = userChoice;
+    const opponent = getComputerChoice();
+    const result = compareChoices(opponent, user);
+    console.log(result);
 }
-
-playFiveRounds();
