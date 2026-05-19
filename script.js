@@ -34,7 +34,11 @@ function playRound(userChoice) {
 
 function displayResult(gameResult) {
     const div = document.createElement('div');
-    div.textContent = gameResult;
+    if (gameResult === 'draw') {
+        div.textContent = `The game is a ${gameResult}.`;
+    } else {
+        div.textContent = `The winner is ${gameResult}!`;
+    }
     body.appendChild(div);
 }
 
