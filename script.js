@@ -25,6 +25,19 @@ function compareChoices(computer, player) {
     }
 }
 
+function playRound(userChoice) {
+    const user = userChoice;
+    const opponent = getComputerChoice();
+    const result = compareChoices(opponent, user);
+    return result;
+}
+
+function displayResult(gameResult) {
+    const div = document.createElement('div');
+    div.textContent = gameResult;
+    body.appendChild(div);
+}
+
 const body = document.querySelector('body');
 const rock = document.createElement('button');
 const paper = document.createElement('button');
@@ -38,23 +51,18 @@ body.appendChild(rock);
 body.appendChild(paper);
 body.appendChild(scissors);
 
-
 rock.addEventListener('click', () => {
     const playerChoice = 'rock';
-    playRound(playerChoice);
+    const result = playRound(playerChoice);
+    displayResult(result);
 });
 paper.addEventListener('click', () => {
     const playerChoice = 'paper';
-    playRound(playerChoice);
+    const result = playRound(playerChoice);
+    displayResult(result);
 });
 scissors.addEventListener('click', () => {
     const playerChoice = 'scissors';
-    playRound(playerChoice);
+    const result = playRound(playerChoice);
+    displayResult(result);
 });
-
-function playRound(userChoice) {
-    const user = userChoice;
-    const opponent = getComputerChoice();
-    const result = compareChoices(opponent, user);
-    console.log(result);
-}
